@@ -25,11 +25,15 @@
     };
 
     macros {
-        ZMK_MACRO(thumbs_up,
-            wait-ms = <1>;
-            tap-ms = <5>;
-            bindings = <&kp PLUS &kp COLON &kp PLUS &kp N1 &kp COLON &kp RET>;
-        )
+        see_all: see_all {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp UP>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
     };
 
     tap_dances {
@@ -48,10 +52,10 @@
         base_layer {
             label = "Base";
             bindings = <
-&kp ESC     &kp Q       &kp W     &kp E     &kp R       &kp T       &kp Y       &kp U       &kp I       &kp O       &kp P        &kp BSPC
-&kp TAB     &kp A       &kp S     &kp D     &kp F       &kp G       &kp H       &kp J       &kp K       &kp L       &kp SEMI     &kp SQT
-&kp LSHIFT  &kp Z       &kp X     &kp C     &kp V       &kp B       &kp N       &kp M       &kp COMMA   &kp DOT     &kp SLASH    &mt RSHIFT RET
-&kp LCTRL   &kp LCTRL   &kp LALT  &kp LGUI  &mo SFT_L   &kp SPACE   &mo CTRL_L  &mo SFT_L   &kp LEFT    &kp DOWN    &kp UP       &kp RIGHT
+&kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T               &kp Y               &kp U           &kp I       &kp O       &kp P        &kp BSPC
+&kp TAB     &kp A       &kp S       &kp D       &kp F       &kp G               &kp H               &kp J           &kp K       &kp L       &kp SEMI     &kp SQT
+&kp LSHIFT  &kp Z       &kp X       &kp C       &kp V       &kp B               &kp N               &kp M           &kp COMMA   &kp DOT     &kp SLASH    &mt RSHIFT RET
+&see_all    &kp LCTRL 	&kp LCTRL   &kp LALT    &kp LUI     &lt SFT_L SPACE	    &lt SFT_L SPACE     &mo CTRL_L      &kp LEFT    &kp DOWN    &kp UP 	     &kp RIGHT
             >;
         };
 
@@ -59,9 +63,9 @@
             label = "Shift";
             bindings = <
 &none       &kp AMPS   &kp STAR    &none       &none       &kp LPAR    &kp RPAR   &none       &kp N7   &kp N8   &kp N9   &none
-&kp GRAVE   &kp DLLR   &kp PRCNT   &kp CARET   &none       &kp LBKT    &kp RBKT   &kp BSLH    &kp N4   &kp N5   &kp N6   &none 
+&kp GRAVE   &kp DLLR   &kp PRCNT   &kp CARET   &none       &kp LBKT    &kp RBKT   &kp BSLH    &kp N4   &kp N5   &kp N6   &none
 &none       &kp EXCL   &kp AT      &kp HASH    &none       &kp MINUS   &kp EQUAL  &none       &kp N1   &kp N2   &kp N3   &none
-&none       &none      &none       &none       &mo FNC_L   &none       &trans     &mo FNC_L   &none    &kp N0   &none    &none
+&none 	    &none      &none       &none       &none       &mo FNC_L   &mo FNC_L  &trans      &none    &kp N0   &none    &none
             >;
         };
 
@@ -69,9 +73,9 @@
             label = "Function";
             bindings = <
 &kp F1      &kp F2   &kp F3   &kp F4      &kp F5      &kp F6      &kp F7      &kp F8     &kp F9    &kp F10     &kp F11      &kp F12
-&kp TILDE   &none    &none    &none       &none       &kp LBRC    &kp RBRC    &kp PIPE   &none     &kp PG_DN   &kp PG_UP    &kp PSCRN 
+&kp TILDE   &none    &none    &none       &none       &kp LBRC    &kp RBRC    &kp PIPE   &none     &kp PG_DN   &kp PG_UP    &kp PSCRN
 &none       &none    &none    &none       &none       &kp UNDER   &kp PLUS    &none      &none     &kp END     &kp HOME     &none
-&none       &none    &none    &none       &trans      &none       &trans      &trans     &none     &kp DEL     &kp INS      &none
+&none       &none    &none    &none       &none       &trans      &trans      &trans     &none     &kp DEL     &kp INS      &none
             >;
         };
 
@@ -81,7 +85,7 @@
 &none   &kp C_PREV     &kp C_NEXT     &kp C_PP      &none   &none   &none       &none       &none   &none       &none   &none
 &none   &kp C_VOL_DN   &kp C_VOL_UP   &kp C_MUTE    &none   &none   &kp LEFT    &kp DOWN    &kp UP  &kp RIGHT   &none   &none
 &none   &none          &none          &none         &none   &none   &none       &none       &none   &none       &none   &none
-&none   &none          &none          &none         &none   &none   &trans      &none       &none   &none       &none   &mo UTIL_L
+&none   &none          &none          &none         &none   &none   &none       &trans      &none   &none       &none   &mo UTIL_L
             >;
         };
 

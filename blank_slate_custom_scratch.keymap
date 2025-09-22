@@ -12,57 +12,68 @@
 
 /
 {
+    macros {
+        see_all: see_all {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp UP>
+                , <&macro_release &kp LCTRL>
+                ;
+        };
+    };
+
     keymap
     {
         compatible = "zmk,keymap";
-        base_layer
-        {
+        base_layer {
             label = "Base";
             bindings = <
-&kp ESC 	&kp Q 		&kp W 		&kp E 		&kp R 		&kp T 		&kp Y 		&kp U 		&kp I 		&kp O 		&kp P 		    &kp BSPC 
-&kp TAB     &kp A 		&kp S 		&kp D 		&kp F 		&kp G 		&kp H 		&kp J 		&kp K 		&kp L 		&kp SEMI 		&kp SQT 
-&kp LSHIFT 	&kp Z 		&kp X 		&kp C 		&kp V 		&kp B 		&kp N 		&kp M 		&kp COMMA 	&kp DOT 	&kp SLASH       &mt RSHIFT RET
-&kp LCTRL 	&kp LCTRL   &kp LALT 	&kp LUI 	&mo SFT_L 	&kp SPACE 	&mo CTRL_L 	&mo SFT_L 	&kp LEFT 	&kp DOWN 	&kp UP 		    &kp RIGHT
+&kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T               &kp Y               &kp U           &kp I       &kp O       &kp P        &kp BSPC
+&kp TAB     &kp A       &kp S       &kp D       &kp F       &kp G               &kp H               &kp J           &kp K       &kp L       &kp SEMI     &kp SQT
+&kp LSHIFT  &kp Z       &kp X       &kp C       &kp V       &kp B               &kp N               &kp M           &kp COMMA   &kp DOT     &kp SLASH    &mt RSHIFT RET
+&see_all    &kp LCTRL 	&kp LCTRL   &kp LALT    &kp LUI     &lt SFT_L SPACE	    &lt SFT_L SPACE     &mo CTRL_L      &kp LEFT    &kp DOWN    &kp UP 	     &kp RIGHT
             >;
         };
-        sft_layer
-        {
+
+        sft_layer {
             label = "Shift";
             bindings = <
-&none   &kp N1 		 &kp N2 	&kp N3 		&kp N4 		&kp N5 		&kp N6 		&kp N7 		&kp N8 		&kp N9 		&kp N0 		 &none 
-&GRAVE 	&kp EXCL     &kp AT 	&kp HASH 	&kp DLLR 	&kp PRCNT 	&kp CARET 	&kp AMPS 	&kp STAR 	&kp LPAR 	&kp RPAR     &none 
-&none 	&none 		 &none 	    &kp BSLH 	&kp LBKT 	&kp MINUS 	&kp EQUAL 	&kp RBKT 	&none 	    &none 	    &none 		 &none 		
-&none 	&none 		 &none 		&none 		&mo FNC_L 	&none 		&trans 		&mo FNC_L 	&none 	    &none 		&none 		 &none
+&none       &kp AMPS   &kp STAR    &none       &none       &kp LPAR    &kp RPAR   &none       &kp N7   &kp N8   &kp N9   &none
+&kp GRAVE   &kp DLLR   &kp PRCNT   &kp CARET   &none       &kp LBKT    &kp RBKT   &kp BSLH    &kp N4   &kp N5   &kp N6   &none
+&none       &kp EXCL   &kp AT      &kp HASH    &none       &kp MINUS   &kp EQUAL  &none       &kp N1   &kp N2   &kp N3   &none
+&none 	    &none      &none       &none       &none       &mo FNC_L   &mo FNC_L  &trans      &none    &kp N0   &none    &none
             >;
         };
-        fnc_layer
-        {
+
+        fnc_layer {
             label = "Function";
             bindings = <
-&kp F1 	&kp F2 	&kp F3 	&kp F4 	&kp F5      &kp F6 		&kp F7 		&kp F8 		&kp F9 		&kp F10 	&kp F11 	&kp F12 
-&TILDE 	&none 	&none 	&DEL 	&kp END     &kp PG_DN 	&kp PG_UP 	&kp HOME 	&kp INS 	&kp PSCRN 	&none 	    &none 
-&none 	&none 	&none 	&PIPE 	&kp LBRC 	&kp UNDER 	&kp PLUS 	&kp RBRC 	&none 	    &none 	    &none 	    &none 
-&none 	&none 	&none 	&none 	&trans 	    &none 		&trans 		&trans 	    &none 	    &none 	    &none 	    &none
+&kp F1      &kp F2   &kp F3   &kp F4      &kp F5      &kp F6      &kp F7      &kp F8     &kp F9    &kp F10     &kp F11      &kp F12
+&kp TILDE   &none    &none    &none       &none       &kp LBRC    &kp RBRC    &kp PIPE   &none     &kp PG_DN   &kp PG_UP    &kp PSCRN
+&none       &none    &none    &none       &none       &kp UNDER   &kp PLUS    &none      &none     &kp END     &kp HOME     &none
+&none       &none    &none    &none       &none       &trans      &trans      &trans     &none     &kp DEL     &kp INS      &none
             >;
         };
-        ctrl_layer
-        {
+
+        ctrl_layer {
             label = "Control";
             bindings = <
-&none 	&kp C_PREV 		&kp C_NEXT 		&kp C_PP	    &none 	&none 	&none 	    &none 	    &none 	&none 	    &none 	&none 
-&none 	&kp C_VOL_DN 	&kp C_VOL_UP    &kp C_MUTE 		&none 	&none 	&kp LEFT 	&kp DOWN 	&kp UP 	&kp RIGHT 	&none 	&none 
-&none 	&none 		    &none 		    &none 		    &none 	&none 	&none 	    &none 	    &none 	&none 	    &none 	&none 
-&none 	&none 		    &none 		    &none 		    &none 	&none 	&trans 	    &none 	    &none 	&none 	    &none 	&mo UTIL_L
+&none   &kp C_PREV     &kp C_NEXT     &kp C_PP      &none   &none   &none       &none       &none   &none       &none   &none
+&none   &kp C_VOL_DN   &kp C_VOL_UP   &kp C_MUTE    &none   &none   &kp LEFT    &kp DOWN    &kp UP  &kp RIGHT   &none   &none
+&none   &none          &none          &none         &none   &none   &none       &none       &none   &none       &none   &none
+&none   &none          &none          &none         &none   &none   &none       &trans      &none   &none       &none   &mo UTIL_L
             >;
         };
-        util_layer
-        {
+
+        util_layer {
             label = "Utility";
             bindings = <
-&bt BT_CLR 	&bt BT(0)   &bt BT(1)   &bt BT(2)   &bt BT(3)   &bt BT(4) 	&none 	&none 	&none 	&none 	&none   &bootloader 
-&none 	    &none 	    &none 	    &none 	    &none 	    none 	    &none 	&none 	&none 	&none 	&none 	&none 
-&none 	    &none 	    &none 	    &none 	    &none 	    &none 	    &none 	&none 	&none 	&none 	&none 	&none 
-&none 	    &none 	    &none 	    &none 	    &none 	    &none 	    &none 	&none 	&none 	&none 	&none 	&trans
+&bt BT_CLR  &bt BT(0)   &bt BT(1)   &bt BT(2)   &bt BT(3)   &bt BT(4)   &none   &none   &none   &none   &none   &bootloader
+&none       &none       &none       &none       &none       &none       &none   &none   &none   &none   &none   &none
+&none       &none       &none       &none       &none       &none       &none   &none   &none   &none   &none   &none
+&none       &none       &none       &none       &none       &none       &none   &none   &none   &none   &none   &trans
             >;
         };
     };
