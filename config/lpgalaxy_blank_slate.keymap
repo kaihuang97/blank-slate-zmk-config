@@ -31,18 +31,6 @@
 #endif
     };
 
-    macros {
-        see_all: see_all {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                = <&macro_press &kp LCTRL>
-                , <&macro_tap &kp UP>
-                , <&macro_release &kp LCTRL>
-                ;
-        };
-    };
-
     tap_dances {
         shifty: shift_caps_word {
             compatible = "zmk,behavior-tap-dance";
@@ -62,7 +50,7 @@
 &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T               &kp Y               &kp U           &kp I       &kp O       &kp P        &kp BSPC
 &kp TAB     &kp A       &kp S       &kp D       &kp F       &kp G               &kp H               &kp J           &kp K       &kp L       &kp SEMI     &kp SQT
 &kp LSHIFT  &kp Z       &kp X       &kp C       &kp V       &kp B               &kp N               &kp M           &kp COMMA   &kp DOT     &kp SLASH    &mt RSHIFT RET
-&see_all    &kp LCTRL 	&kp LCTRL   &kp LALT    &kp LUI     &lt SFT_L SPACE	    &lt SFT_L SPACE     &mo CTRL_L      &kp LEFT    &kp DOWN    &kp UP 	     &kp RIGHT
+&kp LC(UP)  &kp LCTRL 	&kp LCTRL   &kp LALT    &kp LGUI    &lt SFT_L SPACE	    &lt SFT_L SPACE     &mo CTRL_L      &kp LEFT    &kp DOWN    &kp UP 	     &kp RIGHT
             >;
         };
 
